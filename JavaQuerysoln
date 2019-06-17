@@ -1,0 +1,13 @@
+
+NullPointerException:-
+-------------------------
+NullPointerException is a runtime exception and it is thrown when the application try to use an object reference which has a null value.
+
+public class Tester {
+   public static void main(String[] args) {
+      Object ref = null;
+      ref.toString(); // this will throw a NullPointerException
+   }
+}
+
+
