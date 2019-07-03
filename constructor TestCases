@@ -1,0 +1,202 @@
+Rules for creating a Java Constructor
+=======================================
+It has the same name as the class
+It should not return a value not even void 
+
+
+
+
+
+class Demo{
+      int  value1;
+      int  value2;
+      Demo(){
+         value1 = 10;
+         value2 = 20;
+         System.out.println("Inside Constructor");
+     }
+ 
+     public void display(){
+        System.out.println("Value1 === "+value1);
+        System.out.println("Value2 === "+value2);
+    }
+ 
+   public static void main(String args[]){
+       Demo d1 = new Demo();
+      d1.display();
+  }
+}
+
+
+output
+=======
+Inside Constructor
+Value1 === 10
+Value2 === 20
+
+
+
+
+
+Constructor Overloading
+=========================
+Constructor overloading is a technique in Java in which a class can have any number of constructors that differ in parameter list.
+The compiler differentiates these constructors by taking into account the number of parameters in the list and their type.
+
+
+class Demo{
+      int  value1;
+      int  value2;
+      /*Demo(){
+       value1 = 10;
+       value2 = 20;
+       System.out.println("Inside 1st Constructor");
+     }*/
+     Demo(int a){
+      value1 = a;
+      System.out.println("Inside 2nd Constructor");
+    }
+    Demo(int a,int b){
+    value1 = a;
+    value2 = b;
+    System.out.println("Inside 3rd Constructor");
+   }
+   public void display(){
+      System.out.println("Value1 === "+value1);
+      System.out.println("Value2 === "+value2);
+  }
+  public static void main(String args[]){
+    Demo d1 = new Demo();
+    Demo d2 = new Demo(30);
+    Demo d3 = new Demo(30,40);
+    d1.display();
+    d2.display();
+    d3.display();
+ }
+ }
+ 
+ output
+ ========
+ error debug the program
+ 
+ 
+ Constructor Chaining
+ ====================
+ 
+ Test Case-1
+============
+
+ class Demo{
+   int  value1;
+   int  value2;
+    Demo(){
+      value1 = 1;
+      value2 = 2;
+      System.out.println("Inside 1st Parent Constructor");
+   }
+   Demo(int a){
+      value1 = a;
+      System.out.println("Inside 2nd Parent Constructor");
+   }
+  public void display(){
+     System.out.println("Value1 === "+value1);
+     System.out.println("Value2 === "+value2);
+  }
+  public static void main(String args[]){
+     DemoChild d1 = new DemoChild();
+     d1.display();
+  }
+}
+class DemoChild extends Demo{
+    int value3;
+    int value4;
+    DemoChild(){
+    //super(5);
+     value3 = 3;
+     value4 = 4;
+    System.out.println("Inside the Constructor of Child");
+    }
+    public void display(){
+      System.out.println("Value1 === "+value1);
+      System.out.println("Value2 === "+value2);
+      System.out.println("Value1 === "+value3);
+      System.out.println("Value2 === "+value4);
+   }
+}
+
+output
+=======
+
+Inside 1st Parent Constructor
+Inside the Constructor of Child
+Value1 === 1
+Value2 === 2
+Value1 === 3
+Value2 === 4
+
+Test Case-2
+============
+
+
+public class Constructor {
+	
+	  int  value1;
+	   int  value2;
+	    Constructor(){
+	      value1 = 1;
+	      value2 = 2;
+	      System.out.println("Inside 1st Parent Constructor");
+	   }
+	   Constructor(int a){
+	      value1 = a;
+	      System.out.println("Inside 2nd Parent Constructor");
+	   }
+	  public void display(){
+	     System.out.println("Value1 === "+value1);
+	     System.out.println("Value2 === "+value2);
+	  }
+	  public static void main(String args[]){
+	     ConstructorChild d1 = new ConstructorChild();
+	     d1.display();
+	  }
+	}
+	class ConstructorChild extends Constructor{
+	    int value3;
+	    int value4;
+	    ConstructorChild(){
+	    //super(5);
+	     value3 = 3;
+	     value4 = 4;
+	    System.out.println("Inside the Constructor of Child");
+	    }
+	    public void display(){
+	      System.out.println("Value1 === "+value1);
+	      System.out.println("Value2 === "+value2);
+	      System.out.println("Value1 === "+value3);
+	      System.out.println("Value2 === "+value4);
+	   }
+	
+
+}
+
+output
+==========
+Inside 1st Parent Constructor
+Inside the Constructor of Child
+Value1 === 3
+Value2 === 2
+Value2 === 4
+
+==========================================
+
+Uncomment  //super of chaining program Test Case 1
+============
+
+
+
+Inside 2nd Parent Constructor
+Inside the Constructor of Child
+Value1 === 5
+Value2 === 0
+Value1 === 3
+Value2 === 4
